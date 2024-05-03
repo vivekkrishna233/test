@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## this application have infinite scroll down so when you reach at every end of job car it will show loading more..... this means worke cards loading
+## the filter is based on different paraeter such as salarlary ,location, experiennce, currency , role
+
+## user can unselect the selected fileter element by re clicking on the dropdown selected filter
+
+## additional functionality added to read complete job description without oving to nnext page user can simply click on / down arrow buttion next to the view Job option

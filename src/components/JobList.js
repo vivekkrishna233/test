@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import JobCard from './JobCard';
 import { Grid } from '@mui/material';
 
+
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -64,15 +65,15 @@ const JobList = () => {
   }
 
   return (
-    <Grid container spacing={3}>
-    {jobs.map((job, index) => (
-      <Grid key={index} item xs={12} sm={6} md={4}>
-        <JobCard job={job} />
-      </Grid>
-    ))}
-    {isLoading && <div>Loading more...</div>}
-    {!isLoading && !hasMore && <div>No more jobs to load</div>}
-  </Grid>
+     <Grid container spacing={3}>
+      {jobs.map((job, index) => (
+        <Grid key={index} item xs={12} sm={6} md={4}>
+          <JobCard job={job} />
+        </Grid>
+      ))}
+      {isLoading && <div>Loading more...</div>}
+      {!isLoading && !hasMore && <div>No more jobs to load</div>}
+    </Grid>
   );
 };
 

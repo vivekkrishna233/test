@@ -12,12 +12,19 @@ const JobList = () => {
   const [minExpValues, setMinExpValues] = useState([]);
   const [companyNames, setCompanyNames] = useState([]);
   const [locations, setLocations] = useState([]);
+  const [salaries, setSalaries] = useState([]);
+  const [currencies, setCurrencies] = useState([]);
+  const [roles, setRoles] = useState([]);
+
 
   // Define state for filters
   const [filters, setFilters] = useState({
     minExp: [],
     companyName: [],
     location: [],
+    minJdSalary: [], 
+    salaryCurrencyCode: [], 
+    jobRole: []
   });
 
   // Fetch jobs from API
@@ -53,6 +60,15 @@ const JobList = () => {
       const uniqueLocations = [...new Set(data.jdList.map(job => job.location))];
       setLocations(uniqueLocations);
 
+      const uniqueSalaries = [...new Set(data.jdList.map(job => job.minJdSalary))];
+      setSalaries(uniqueSalaries);
+
+      const uniqueCurrencies = [...new Set(data.jdList.map(job => job.salaryCurrencyCode))];
+      setCurrencies(uniqueCurrencies);
+
+      const uniqueRoles = [...new Set(data.jdList.map(job => job.jobRole))];
+      setRoles(uniqueRoles);
+
     } catch (error) {
       setError(error);
       setIsLoading(false);
@@ -62,6 +78,7 @@ const JobList = () => {
   // Fetch more jobs when user scrolls
   const handleScroll = () => {
     if (!isLoading && hasMore && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      setIsLoading(true); 
       fetchJobs();
     }
   };
@@ -80,7 +97,10 @@ const JobList = () => {
     return (
       (filters.minExp.length === 0 || filters.minExp.includes(job.minExp)) &&
       (filters.companyName.length === 0 || filters.companyName.includes(job.companyName)) &&
-      (filters.location.length === 0 || filters.location.includes(job.location))
+      (filters.location.length === 0 || filters.location.includes(job.location))&&
+      (filters.minJdSalary.length === 0 || filters.minJdSalary.includes(job.minJdSalary))&&
+      (filters.jobRole.length === 0 || filters.jobRole.includes(job.jobRole))&&
+      (filters.salaryCurrencyCode.length === 0 || filters.salaryCurrencyCode.includes(job.salaryCurrencyCode ))
     );
   });
 
@@ -102,27 +122,44 @@ const JobList = () => {
 
   return (
     <div>
-      {/* Dropdowns for filtering */}
+      
       <Dropdown
-        values={minExpValues}
-        label="Min experience"
-        selectedValues={filters.minExp}
-        setSelectedValues={selectedValues => handleFilterChange('minExp', selectedValues)}
-      />
-      <Dropdown
-        values={companyNames} // Replace with actual company names
-        label="Company name"
-        selectedValues={filters.companyName}
-        setSelectedValues={selectedValues => handleFilterChange('companyName', selectedValues)}
-      />
-      <Dropdown
-        values={locations} // Replace with actual locations
-        label="Location"
-        selectedValues={filters.location}
-        setSelectedValues={selectedValues => handleFilterChange('location', selectedValues)}
-      />
+  values={minExpValues}
+  label="Min experience"
+  selectedValues={filters.minExp} 
+  setSelectedValues={selectedValues => handleFilterChange('minExp', selectedValues)}
+/>
+<Dropdown
+  values={companyNames} 
+  label="Company name"
+  selectedValues={filters.companyName} 
+  setSelectedValues={selectedValues => handleFilterChange('companyName', selectedValues)}
+/>
+<Dropdown
+  values={locations} 
+  label="Location"
+  selectedValues={filters.location} 
+  setSelectedValues={selectedValues => handleFilterChange('location', selectedValues)}
+/>
+<Dropdown
+  values={roles}
+  label="Job role"
+  selectedValues={filters.jobRole} 
+  setSelectedValues={selectedValues => handleFilterChange('jobRole', selectedValues)}
+/>
+<Dropdown
+  values={currencies}
+  label="Salary currency"
+  selectedValues={filters.salaryCurrencyCode} 
+  setSelectedValues={selectedValues => handleFilterChange('salaryCurrencyCode', selectedValues)}
+/>
+<Dropdown
+  values={salaries}
+  label="Min base pay"
+  selectedValues={filters.minJdSalary} 
+  setSelectedValues={selectedValues => handleFilterChange('minJdSalary', selectedValues)}
+/>
 
-      {/* Job cards */}
       <Grid container spacing={3}>
         {filteredJobs.map((job, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>

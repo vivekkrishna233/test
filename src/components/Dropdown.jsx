@@ -23,6 +23,7 @@ const Dropdown = ({ values, label, selectedValues, setSelectedValues }) => {
         <InputLabel>{label}</InputLabel>
       <Select
         multiple
+        label={label}
         value={selectedValues}
         onChange={handleChange}
         renderValue={(selected) => (

@@ -122,45 +122,45 @@ const JobList = () => {
 
   return (
     <div>
-      
-      <Dropdown
-  values={minExpValues}
-  label="Min experience"
-  selectedValues={filters.minExp} 
-  setSelectedValues={selectedValues => handleFilterChange('minExp', selectedValues)}
-/>
-<Dropdown
-  values={companyNames} 
-  label="Company name"
-  selectedValues={filters.companyName} 
-  setSelectedValues={selectedValues => handleFilterChange('companyName', selectedValues)}
-/>
-<Dropdown
-  values={locations} 
-  label="Location"
-  selectedValues={filters.location} 
-  setSelectedValues={selectedValues => handleFilterChange('location', selectedValues)}
-/>
-<Dropdown
-  values={roles}
-  label="Job role"
-  selectedValues={filters.jobRole} 
-  setSelectedValues={selectedValues => handleFilterChange('jobRole', selectedValues)}
-/>
-<Dropdown
-  values={currencies}
-  label="Salary currency"
-  selectedValues={filters.salaryCurrencyCode} 
-  setSelectedValues={selectedValues => handleFilterChange('salaryCurrencyCode', selectedValues)}
-/>
-<Dropdown
-  values={salaries}
-  label="Min base pay"
-  selectedValues={filters.minJdSalary} 
-  setSelectedValues={selectedValues => handleFilterChange('minJdSalary', selectedValues)}
-/>
-
-      <Grid container spacing={3}>
+   <div style={{ display: 'flex', flexDirection: 'row', gap: '5px' }}>
+  <Dropdown
+    values={minExpValues}
+    label="Min experience"
+    selectedValues={filters.minExp} 
+    setSelectedValues={selectedValues => handleFilterChange('minExp', selectedValues)}
+  />
+  <Dropdown
+    values={companyNames} 
+    label="Company name"
+    selectedValues={filters.companyName} 
+    setSelectedValues={selectedValues => handleFilterChange('companyName', selectedValues)}
+  />
+  <Dropdown
+    values={locations} 
+    label="Location"
+    selectedValues={filters.location} 
+    setSelectedValues={selectedValues => handleFilterChange('location', selectedValues)}
+  />
+  <Dropdown
+    values={roles}
+    label="Job role"
+    selectedValues={filters.jobRole} 
+    setSelectedValues={selectedValues => handleFilterChange('jobRole', selectedValues)}
+  />
+  <Dropdown
+    values={currencies}
+    label="Salary currency"
+    selectedValues={filters.salaryCurrencyCode} 
+    setSelectedValues={selectedValues => handleFilterChange('salaryCurrencyCode', selectedValues)}
+  />
+  <Dropdown
+    values={salaries}
+    label="Min base pay"
+    selectedValues={filters.minJdSalary} 
+    setSelectedValues={selectedValues => handleFilterChange('minJdSalary', selectedValues)}
+  />
+</div>
+      <Grid container spacing={4}  sx={{mt:'1% !important'}}>
         {filteredJobs.map((job, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>
             <JobCard job={job} />

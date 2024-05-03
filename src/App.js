@@ -5,8 +5,6 @@ import JobList from './components/JobList';
 function App() {
   return (
     <Container maxWidth="md">
-      <h1>Job Listings</h1>
-      
       <JobList />
     </Container>
   );

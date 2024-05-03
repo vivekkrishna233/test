@@ -42,7 +42,7 @@ export default function JobCard({ job }) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width:'100% !important' }}>
       <CardContent>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div>

@@ -10,6 +10,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
+import Button from '@mui/material/Button';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const ExpandMore = styled((props) => {
@@ -35,14 +36,28 @@ export default function JobCard({ job }) {
     setExpanded(!expanded);
   };
 
+  const handleReviewMoreClick = () => {
+    window.open(job.jdLink, '_blank');
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
-        <Typography variant="h5" component="div">
-          {job.title}
-        </Typography>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div>
+          <img src={job.logoUrl} alt={job.companyName} style={{ height: 20, marginRight: 5 }} /> {/* Include the logo */}
+          </div>
+        <div>
         <Typography variant="subtitle1" gutterBottom>
-          Company: {job.company}
+          {job.companyName}
+        </Typography>
+        </div>
+        </div>
+        <Typography variant="h5" component="div">
+          {job.jobRole}
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          Estimated Salary: {job.minJdSalary}-{job.maxJdSalary} {job.salaryCurrencyCode}
         </Typography>
         <Typography variant="body2" color="textSecondary" gutterBottom>
           Location: {job.location}
@@ -53,23 +68,11 @@ export default function JobCard({ job }) {
           </Typography>
         ) : (
           <Typography variant="body2" component="p">
-            {truncate(job.jobDetailsFromCompany, 40)}
+            {truncate(job.jobDetailsFromCompany, 100)}
           </Typography>
         )}
-        <Typography variant="body2" color="textSecondary">
-          Experience Required: {job.minExp} - {job.maxExp} years
-        </Typography>
-        <Typography variant="body2" color="textSecondary">
-          Salary: {job.minJdSalary}-{job.maxJdSalary} {job.salaryCurrencyCode}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <Button color="primary" onClick={handleReviewMoreClick}>view jobs</Button> 
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -78,6 +81,16 @@ export default function JobCard({ job }) {
         >
           <ExpandMoreIcon />
         </ExpandMore>
+        </div>
+        <Typography variant="body2" color="textSecondary">
+          Minimum Experience
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          {job.minExp} - {job.maxExp} years
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        
       </CardActions>
     </Card>
   );

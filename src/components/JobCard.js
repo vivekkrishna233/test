@@ -11,6 +11,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import Button from '@mui/material/Button';
+import { Grid } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const ExpandMore = styled((props) => {
@@ -90,8 +91,19 @@ export default function JobCard({ job }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        
-      </CardActions>
+  <Grid container spacing={1}>
+    <Grid item xs={12}>
+      <Button variant="contained" size="medium"  sx={{ width: '100%' ,  bgcolor: '#4AEFB7' }}>
+        Eassy Apply
+      </Button>
+    </Grid>
+    <Grid item xs={12}>
+      <Button variant="contained" size="medium" sx={{ width: '100%'  ,bgcolor: '#392ECA'}}>
+        Unlock Refral Ask
+      </Button>
+    </Grid>
+  </Grid>
+</CardActions>
     </Card>
   );
 }

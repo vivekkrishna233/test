@@ -69,9 +69,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-## this application have infinite scroll down so when you reach at every end of job car it will show loading more..... this means worke cards loading
-## the filter is based on different paraeter such as salarlary ,location, experiennce, currency , role
+## This application has infinite scroll down, so when you reach the end of every job card, it will display "Loading More..." indicating that more work cards are loading.
+## The filter is based on different parameters such as salary, location, experience, currency, and role
 
-## user can unselect the selected fileter element by re clicking on the dropdown selected filter
+## Users can deselect the selected filter element by clicking again on the dropdown selected filter.
 
-## additional functionality added to read complete job description without oving to nnext page user can simply click on / down arrow buttion next to the view Job option
+## Additional functionality has been added to read complete job descriptions without moving to the next page. Users can simply click on the up/down arrow button next to the "View Job" option.
